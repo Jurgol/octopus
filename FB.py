@@ -25,11 +25,8 @@ def FB_auth():
     FB_access_token = re.search('\#access_token=([^&]*)', url_with_code).group(1)
     return FB_access_token
 
-def FB_message(text):
+def FB_message(message_text):
     graph = facebook.GraphAPI(
         'AAAHdkzHr9D8BAHKmyZBoCbYLg9fk2QjDo9vSDSVFkmNpGIegub18HlAu7QjdNk8TLCXraWZAkYZCsPigls6AwbhomePlXV2CIMhbGI6R3oZAPKwXmZCT3')
-    graph.put_object("me", "feed", message = text)
+    graph.put_object("me", "feed", message = message_text)
 
-
-text = 'test'
-FB_message(text)
