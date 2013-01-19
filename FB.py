@@ -2,6 +2,7 @@ __author__ = 'Jury Golovan'
 from rauth.service import OAuth2Service
 import re
 import webbrowser
+import facebook
 
 def FB_auth():
     facebook = OAuth2Service(
@@ -23,3 +24,12 @@ def FB_auth():
     url_with_code = raw_input("Copy URL from your browser's address bar: ")
     FB_access_token = re.search('\#access_token=([^&]*)', url_with_code).group(1)
     return FB_access_token
+
+def FB_message(text):
+    graph = facebook.GraphAPI(
+        'AAAHdkzHr9D8BAHKmyZBoCbYLg9fk2QjDo9vSDSVFkmNpGIegub18HlAu7QjdNk8TLCXraWZAkYZCsPigls6AwbhomePlXV2CIMhbGI6R3oZAPKwXmZCT3')
+    graph.put_object("me", "feed", message = text)
+
+
+text = 'test'
+FB_message(text)
