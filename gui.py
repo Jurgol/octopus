@@ -50,6 +50,22 @@ class Form(QDialog):
         
         self.setWindowTitle("Octopus")
         
+    def updateVkCredentials(self):
+        dialog = vk.VkDlg()
+        if dialog.exec_():
+            self.vk_access_token = dialog.getAccessToken()
+    
+    def updateFbCredentials(self):
+        pass
+    
+    def updateTwCredentials(self):
+        pass
+    
+    def postMessage(self):
+        message = unicode(self.message.toPlainText())
+        api = vk.VkApi()
+        api.vkMessage(message, self.vk_access_token)
+        
 app = QApplication(sys.argv)
 form = Form()
 form.show()
