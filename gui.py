@@ -42,6 +42,12 @@ class Form(QDialog):
         self.setLayout(layout)
         self.message.setFocus()
         
+        self.connect(vkButton, SIGNAL("clicked()"), self.updateVkCredentials)
+        self.connect(fbButton, SIGNAL("clicked()"), self.updateFbCredentials)
+        self.connect(twButton, SIGNAL("clicked()"), self.updateTwCredentials)
+        self.connect(postButton, SIGNAL("clicked()"), self.postMessage)
+        self.connect(quitButton, SIGNAL("clicked()"), self.close)
+        
         self.setWindowTitle("Octopus")
         
 app = QApplication(sys.argv)
