@@ -3,8 +3,9 @@ Created on 21.01.2013
 
 @author: pzaytsev
 '''
-import oauth2 as oauth
+import oauth2 as oauth, urllib
 import urlparse
+
 
 def twitter_auth():
     '''
@@ -35,3 +36,11 @@ def twitter_auth():
     token = oauth.Token(key=access_token['oauth_token'],secret=access_token['oauth_token_secret'])
     client = oauth.Client(consumer, token)
     return client
+
+def post_message_twitter(client, message):
+    resp, content =client.request("https://api.twitter.com/1/statuses/update.json", 
+                                  "POST",
+                                  body=urllib.urlencode({'status': message}),
+                                  headers=None,
+                                  force_auth_header=True)
+    return content
