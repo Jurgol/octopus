@@ -7,34 +7,34 @@ class Form(QDialog):
     def __init__(self, parent = None):
         super(Form, self).__init__(parent)
         
-        vklabel = QLabel("VK credentials")
-        self.vkbutton = QPushButton("Connect to Vk account")
+        vkLabel = QLabel("VK credentials")
+        vkButton = QPushButton("Connect to Vk account")
         
-        fblabel = QLabel("FB credentials")
-        self.fbbutton = QPushButton("Connect to FB account")
+        fbLabel = QLabel("FB credentials")
+        fbButton = QPushButton("Connect to FB account")
         
-        twlabel = QLabel("Twitter credentials")
-        self.twbutton = QPushButton("Connect to Twitter account")
+        twLabel = QLabel("Twitter credentials")
+        twButton = QPushButton("Connect to Twitter account")
         
         self.message = QTextEdit("Type your post here")
         
-        okButton = QPushButton("&Post")
-        cancelButton = QPushButton("Exit")
+        postButton = QPushButton("&Post")
+        quitButton = QPushButton("Quit")
         
         buttonLayout = QHBoxLayout()
         buttonLayout.addStretch()
-        buttonLayout.addWidget(okButton)
-        buttonLayout.addWidget(cancelButton)
+        buttonLayout.addWidget(postButton)
+        buttonLayout.addWidget(quitButton)
         
         layout = QGridLayout()
-        layout.addWidget(vklabel, 0, 0)
-        layout.addWidget(self.vkbutton, 1, 0)
+        layout.addWidget(vkLabel, 0, 0)
+        layout.addWidget(vkButton, 1, 0)
         
-        layout.addWidget(fblabel, 2, 0)
-        layout.addWidget(self.fbbutton, 3, 0)
+        layout.addWidget(fbLabel, 2, 0)
+        layout.addWidget(fbButton, 3, 0)
         
-        layout.addWidget(twlabel, 4, 0)
-        layout.addWidget(self.twbutton, 5, 0)
+        layout.addWidget(twLabel, 4, 0)
+        layout.addWidget(twButton, 5, 0)
 
         layout.addWidget(self.message, 6, 0)
         
