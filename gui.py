@@ -1,6 +1,7 @@
 import sys
 import vk
 import FB
+import twitter
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
@@ -63,7 +64,9 @@ class Form(QDialog):
             self.fb_access_token = dialog.getAccessToken()
     
     def updateTwCredentials(self):
-        pass
+        dialog = twitter.TwitterDlg()
+        if dialog.exec_():
+            self.twitter_client = dialog.getClient()
     
     def postMessage(self):
         message = unicode(self.message.toPlainText())
