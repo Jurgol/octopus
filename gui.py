@@ -1,5 +1,6 @@
 import sys
 import vk
+import FB
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
@@ -57,7 +58,9 @@ class Form(QDialog):
             self.vk_access_token = dialog.getAccessToken()
     
     def updateFbCredentials(self):
-        pass
+        dialog = FB.FbDlg()
+        if dialog.exec_():
+            self.fb_access_token = dialog.getAccessToken()
     
     def updateTwCredentials(self):
         pass
@@ -66,6 +69,8 @@ class Form(QDialog):
         message = unicode(self.message.toPlainText())
         api = vk.VkApi()
         api.vkMessage(message, self.vk_access_token)
+        api = FB.FbApi()
+        api.fbMessage(message, self.fb_access_token)
         tw_api = twitter.TwitterApi()
         tw_api.twitterMessage(message, self.twitter_client)
         
