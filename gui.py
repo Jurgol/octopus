@@ -72,8 +72,8 @@ class Form(QDialog):
         message = unicode(self.message.toPlainText())
         api = vk.VkApi()
         api.vkMessage(message, self.vk_access_token)
-        api = FB.FbApi()
-        api.fbMessage(message, self.fb_access_token)
+        # api = FB.FbApi()
+        # api.fbMessage(message, self.fb_access_token)
         tw_api = twitter.TwitterApi()
         tw_api.twitterMessage(message, self.twitter_client)
         
